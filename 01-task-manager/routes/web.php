@@ -58,12 +58,16 @@ $tasks = [
 ];
 
 
-Route::get('/', function () {
+Route::get('/', function () use($tasks) {
     return view('index',[
-        'name'=>'Lumala'
+        'tasks'=>$tasks
     ]);
-});
+})->name('tasks.index');
+
+Route::get('/{id}', function () {
+    return 'one single task';
+})->name('tasks.show');
 
 Route:: fallback( function(){
-    return 'get some where';
+    return 'the page does not exist';
 });

@@ -1,9 +1,12 @@
-HELLO PLADE get
-@isset($name)
+<h1>List of tasks</h1>
 <div>
-    <h3>
-    The name is {{$name}}
-    </h3>
+    @forelse($tasks as $task)
+    <div>
+        <a href="{{ route('tasks.show',['id'=> $task->id])}}">{{$task->title}}</a>
+    </div>
+    @empty
+    <div>There are no tasks</div>
+    @endforelse
 </div>
-@endisset
+
 
